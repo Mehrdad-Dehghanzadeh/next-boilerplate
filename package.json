@@ -22,7 +22,7 @@
     "build": "env-cmd -e prod -r .env.json next build",
     "start": "env-cmd -e prod -r .env.json next start",
     "lint": "env-cmd -e dev -r .env.json next lint",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "axios": "^1.6.7",
