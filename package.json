@@ -2,6 +2,18 @@
   "name": "next-boilerplate",
   "version": "0.0.0",
   "private": false,
+  "author": {
+    "name": "Mehrdad Dehghanzadeh",
+    "email": "mehrdad.dehghanzadeh.dev@gmail.com"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mehrdad-Dehghanzadeh/next-boilerplate.git"
+  },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
@@ -14,6 +26,7 @@
   },
   "dependencies": {
     "env-cmd": "^10.1.0",
+    "axios": "^1.6.5",
     "next": "14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
