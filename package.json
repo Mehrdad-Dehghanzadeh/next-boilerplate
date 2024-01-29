@@ -2,6 +2,18 @@
   "name": "next-boilerplate",
   "version": "0.0.0",
   "private": false,
+  "author": {
+    "name": "Mehrdad Dehghanzadeh",
+    "email": "mehrdad.dehghanzadeh.dev@gmail.com"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mehrdad-Dehghanzadeh/next-boilerplate.git"
+  },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
   },
@@ -10,19 +22,20 @@
     "build": "env-cmd -e prod -r .env.json next build",
     "start": "env-cmd -e prod -r .env.json next start",
     "lint": "env-cmd -e dev -r .env.json next lint",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
+    "axios": "^1.6.7",
     "env-cmd": "^10.1.0",
-    "next": "14.0.4",
+    "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.5",
+    "@types/node": "^20.11.8",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
-    "husky": "^8.0.3",
+    "husky": "^9.0.6",
     "lint-staged": "^15.2.0",
     "prettier": "3.1.1",
     "typescript": "^5.3.3"
