@@ -4,8 +4,14 @@ import interceptorsRequest from './interceptorsRequest'
 import interceptorsResponse from './interceptorsResponse'
 
 const { publicRuntimeConfig } = getConfig()
+const defaultHeader = {
+  'Accept-Language': 'fa, en-us'
+}
+
+
 const config = {
-  baseURL: publicRuntimeConfig.apiBaseUrl
+  baseURL: publicRuntimeConfig.apiBaseUrl,
+  headers: defaultHeader
 }
 
 // instance of Axios
