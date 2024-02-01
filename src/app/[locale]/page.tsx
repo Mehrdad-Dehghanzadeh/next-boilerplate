@@ -1,11 +1,14 @@
 import styles from './page.module.css'
-import { getTranslations } from 'next-intl/server'
+import apis from '@apis'
 
-export default async function Home() {
-  const t = await getTranslations()
+export default function Home() {
+  apis.auth.users().catch((err) => {
+    console.log(err)
+  })
+
   return (
     <main className={styles.main}>
-      <h1>{t('app.title')}</h1>
+      <h1></h1>
     </main>
   )
 }

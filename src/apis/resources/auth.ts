@@ -3,7 +3,7 @@ export default ($axios: any) => ({
     return $axios.post('/login', payload)
   },
 
-  profile() {
-    return $axios.get('/profile')
+  users() {
+    return $axios.get('/m')
   }
 })
