@@ -16,7 +16,7 @@ async function mapStatusMessageOnResponse(res: AxiosResponse) {
 }
 
 async function mapStatusMessageOnResponseError(err: AxiosError) {
-  const status = String(err?.response?.status || '')
+  const status = String(err?.response?.status ?? '')
   const t =
     typeof window === 'undefined'
       ? await getTranslations('statusMessage')
