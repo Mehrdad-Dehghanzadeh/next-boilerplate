@@ -24,6 +24,7 @@
       "@public/*": ["./public/*"],
       "@components/*": ["./src/components/*"],
       "@components-page/*": ["./src/components/page/*"],
+      "@locales/*": ["./src/locales/*"],
       "@utils/*": ["./src/utils/*"]
     }
   },
