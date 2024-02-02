@@ -1,6 +1,5 @@
 'use client'
-import { ThemeProvider } from '@mui/material/styles'
-import { createTheme } from '@mui/material/styles'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { CacheProvider } from '@emotion/react'
 import { faIR } from '@mui/material/locale'
 import createCache from '@emotion/cache'
