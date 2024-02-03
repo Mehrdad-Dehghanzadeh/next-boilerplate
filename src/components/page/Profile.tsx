@@ -1,16 +1,14 @@
 'use client'
+import Button from '@mui/material/Button'
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 
-import TablePagination from '@mui/material/TablePagination'
 export default function Profile() {
   return (
     <div>
-      <TablePagination
-        count={2000}
-        rowsPerPage={10}
-        page={1}
-        component="div"
-        onPageChange={() => {}}
-      />
+      <Button>
+        <span>سلام دنیا !</span>
+        <AccessAlarmIcon />
+      </Button>
     </div>
   )
 }

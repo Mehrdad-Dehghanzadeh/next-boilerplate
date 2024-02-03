@@ -1,5 +1,5 @@
 import TextField from '@mui/material/TextField'
-import Profile from '@/components/page/Profile'
+import Profile from '@components-page/Profile'
 
 export default function Home() {
   return (
