@@ -24,8 +24,10 @@
       "@public/*": ["./public/*"],
       "@components/*": ["./src/components/*"],
       "@components-page/*": ["./src/components/page/*"],
+      "@components-kits/*": ["./src/components/kits/*"],
       "@locales/*": ["./src/locales/*"],
       "@utils/*": ["./src/utils/*"],
+      "@assets/*": ["./src/assets/*"],
       "@apis": ["./src/apis/index"]
     }
   },
