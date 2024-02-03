@@ -1,14 +1,18 @@
-import styles from './page.module.css'
-import apis from '@apis'
+import TextField from '@mui/material/TextField'
+import Profile from '@components-page/Profile'
 
 export default function Home() {
-  apis.auth.users().catch((err) => {
-    console.log(err)
-  })
-
   return (
-    <main className={styles.main}>
+    <main>
       <h1></h1>
+      <TextField
+        label="ملصق"
+        placeholder="العنصر النائب"
+        helperText="هذا نص مساعد"
+        variant="outlined"
+      />
+
+      <Profile />
     </main>
   )
 }
