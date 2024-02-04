@@ -28,6 +28,9 @@
       "@locales/*": ["./src/locales/*"],
       "@utils/*": ["./src/utils/*"],
       "@assets/*": ["./src/assets/*"],
+      "@type/*": ["./src/ts/type/*"],
+      "@enums/*": ["./src/ts/enums/*"],
+      "@models/*": ["./src/ts/models/*"],
       "@apis": ["./src/apis/index"]
     }
   },
