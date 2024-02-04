@@ -11,7 +11,7 @@ ul li {
 
 html {
   overflow-y: auto;
-  @include text-size();
+  @include text-size(100%);
 }
 
 /* Chrome, Safari, Edge, Opera */
