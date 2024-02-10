@@ -31,6 +31,7 @@
       "@type/*": ["./src/ts/type/*"],
       "@enums/*": ["./src/ts/enums/*"],
       "@models/*": ["./src/ts/models/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@apis": ["./src/apis/index"]
     }
   },

@@ -1,7 +1,7 @@
 import './KTextField.scss'
 import TextField from '@mui/material/TextField'
 import { useMemo, useId } from 'react'
-import { Controller } from 'react-hook-form'
+import { Controller, type RegisterOptions } from 'react-hook-form'
 
 const appName = process?.env?.APP_NAME
 
@@ -9,6 +9,7 @@ type PropsType = {
   className?: string
   control: any
   name: string
+  rules?: RegisterOptions | object
   onBlur?: (e: any) => void
   onChange?: (e: any) => void
   [key: string]: any
@@ -18,14 +19,14 @@ export function KTextField({
   className = '',
   control,
   name,
+  rules = {},
   onBlur,
   onChange,
   ...props
 }: Readonly<PropsType>) {
-  const render = ({ field }: { field: any }) => {
+  const render = ({ field, fieldState }: { field: any; fieldState: any }) => {
     const { onChange: onChangeField, onBlur: onBlurField, ...fieldProps } = field
     const _id = useId()
-
     let attrs = useMemo(() => {
       return { ...props, ...fieldProps }
     }, [props, fieldProps])
@@ -42,6 +43,8 @@ export function KTextField({
           onBlurField?.(e)
         }}
         name={`${appName}_${name}_${_id}`}
+        error={!!fieldState?.invalid}
+        helperText={fieldState?.error?.message}
       />
     )
   }
@@ -58,6 +61,7 @@ export function KTextField({
         control={control}
         name={name}
         render={render}
+        rules={rules}
       />
     </div>
   )
