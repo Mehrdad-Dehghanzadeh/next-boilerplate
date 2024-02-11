@@ -1,3 +1,6 @@
 .profile {
-  @include flex-row();
+  @include flex-column();
+  max-width: 480px;
+  margin: 40px auto 0;
+  gap: 20px;
 }
