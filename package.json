@@ -38,7 +38,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.50.1",
     "stylis": "^4.3.1",
-    "stylis-plugin-rtl": "^2.1.1"
+    "stylis-plugin-rtl": "^2.1.1",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",

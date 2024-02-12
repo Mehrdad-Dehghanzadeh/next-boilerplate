@@ -3,6 +3,7 @@ import Button from '@mui/material/Button'
 import { KTextField } from '@components-kits'
 import { useForm } from 'react-hook-form'
 import useValidations from '@hooks/useValidations'
+import useAppStore from '@store/app'
 
 import './Profile.scss'
 type FormValues = {
@@ -16,21 +17,17 @@ export default function Profile() {
       password: '1'
     }
   })
+  const appStore = useAppStore()
 
   const { required, maxLength, iban } = useValidations()
 
   const onsubmit = (data: FormValues) => {
-    console.log(data)
+    appStore.setUser(data)
   }
 
   return (
     <form className="profile" onSubmit={handleSubmit(onsubmit)}>
-      <KTextField
-        rules={{ validate: iban }}
-        control={control}
-        name="username"
-        label="فیلد یک"
-      />
+      <KTextField control={control} name="username" label="فیلد یک" />
       <KTextField
         rules={{ required: required(), maxLength: maxLength(4) }}
         control={control}
