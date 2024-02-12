@@ -18,7 +18,7 @@ const cacheRtl = createCache({
   stylisPlugins: [prefixer, rtlPlugin]
 })
 
-export default function Theme({ children }: { children: React.ReactNode }) {
+export default function Theme({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <CacheProvider value={cacheRtl}>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
