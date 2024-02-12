@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import Theme from './theme'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import { NextIntlClientProvider } from 'next-intl'
+import { unstable_setRequestLocale } from 'next-intl/server'
+import { defaultLocale } from '@/i18n'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -9,24 +11,25 @@ export const metadata: Metadata = {
 }
 
 export default async function RootLayout({
-  children,
-  params
-}: {
+  children
+}: Readonly<{
   children: React.ReactNode
-  params: { locale: string }
-}) {
+  params?: { locale: string }
+}>) {
+  unstable_setRequestLocale(defaultLocale)
+
   let messages
   try {
-    messages = (await import(`../../messages/fa.json`)).default
+    messages = (await import(`../../messages/${defaultLocale}.json`)).default
   } catch (error) {
     console.error('Failed to load messages:', error)
   }
 
   return (
-    <html lang={params.locale} dir="rtl">
+    <html lang={defaultLocale} dir="rtl">
       <body>
         <AppRouterCacheProvider>
-          <NextIntlClientProvider locale={'fa'} messages={messages}>
+          <NextIntlClientProvider locale={defaultLocale} messages={messages}>
             <Theme>
               <div id="root-layout">{children}</div>
             </Theme>
