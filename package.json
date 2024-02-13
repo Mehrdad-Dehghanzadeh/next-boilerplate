@@ -46,10 +46,25 @@
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@types/stylis": "^4.2.5",
+    "autoprefixer": "^10.4.17",
     "husky": "^9.0.10",
     "lint-staged": "^15.2.2",
+    "postcss": "^8.4.35",
     "prettier": "3.1.1",
     "sass": "^1.70.0",
     "typescript": "^5.3.3"
-  }
+  },
+  "browserslist": [
+    "ie 11",
+    "chrome 90",
+    "edge 91",
+    "firefox 78",
+    "ios_saf 12.2",
+    "kaios 2.5",
+    "op_mini all",
+    "op_mob 73",
+    "opera 76",
+    "safari 14",
+    "samsung 13.0"
+  ]
 }
