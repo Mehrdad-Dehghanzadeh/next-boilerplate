@@ -5,6 +5,7 @@ import { faIR } from '@mui/material/locale'
 import createCache from '@emotion/cache'
 import rtlPlugin from 'stylis-plugin-rtl'
 import { prefixer } from 'stylis'
+import { Snack } from '@components-includes'
 
 const theme = createTheme(
   {
@@ -12,6 +13,8 @@ const theme = createTheme(
   },
   faIR
 )
+
+
 
 const cacheRtl = createCache({
   key: 'muirtl',
@@ -21,7 +24,10 @@ const cacheRtl = createCache({
 export default function Theme({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <CacheProvider value={cacheRtl}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        {children}
+        <Snack />
+      </ThemeProvider>
     </CacheProvider>
   )
 }

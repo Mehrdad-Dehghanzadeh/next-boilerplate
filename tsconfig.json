@@ -25,6 +25,7 @@
       "@components/*": ["./src/components/*"],
       "@components-page/*": ["./src/components/page/*"],
       "@components-kits": ["./src/components/kits"],
+      "@components-includes": ["./src/components/includes"],
       "@locales/*": ["./src/locales/*"],
       "@utils/*": ["./src/utils/*"],
       "@assets/*": ["./src/assets/*"],
