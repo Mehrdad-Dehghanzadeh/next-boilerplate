@@ -4,8 +4,9 @@ import { KTextField } from '@components-kits'
 import { useForm } from 'react-hook-form'
 import useValidations from '@hooks/useValidations'
 import useAppStore from '@store/app'
-
+import useSnackbar from '@hooks/useSnackbar'
 import './Profile.scss'
+
 type FormValues = {
   username: string
   password: string
@@ -20,11 +21,12 @@ export default function Profile() {
   const appStore = useAppStore()
 
   const { required, maxLength, iban } = useValidations()
+  const { snackbar } = useSnackbar()
 
   const onsubmit = (data: FormValues) => {
     appStore.setUser(data)
+    snackbar('success', 'sss')
   }
-
   return (
     <form className="profile" onSubmit={handleSubmit(onsubmit)}>
       <KTextField control={control} name="username" label="فیلد یک" />

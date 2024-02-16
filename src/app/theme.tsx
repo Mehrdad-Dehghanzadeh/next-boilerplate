@@ -14,8 +14,6 @@ const theme = createTheme(
   faIR
 )
 
-
-
 const cacheRtl = createCache({
   key: 'muirtl',
   stylisPlugins: [prefixer, rtlPlugin]
@@ -25,8 +23,7 @@ export default function Theme({ children }: Readonly<{ children: React.ReactNode
   return (
     <CacheProvider value={cacheRtl}>
       <ThemeProvider theme={theme}>
-        {children}
-        <Snack />
+        <Snack>{children}</Snack>
       </ThemeProvider>
     </CacheProvider>
   )

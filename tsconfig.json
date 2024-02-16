@@ -26,6 +26,7 @@
       "@components-page/*": ["./src/components/page/*"],
       "@components-kits": ["./src/components/kits"],
       "@components-includes": ["./src/components/includes"],
+      "@components-includes/*": ["./src/components/includes/*"],
       "@locales/*": ["./src/locales/*"],
       "@utils/*": ["./src/utils/*"],
       "@assets/*": ["./src/assets/*"],
@@ -33,6 +34,7 @@
       "@enums/*": ["./src/ts/enums/*"],
       "@models/*": ["./src/ts/models/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@context/*": ["./src/context/*"],
       "@apis": ["./src/apis/index"],
       "@store/*": ["./src/store/*"]
     }
