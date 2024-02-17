@@ -5,7 +5,7 @@ export enum Activity {
   Active
 }
 
-const enumList: EnumList = [
+export const ActivityEnumList: EnumList = [
   {
     id: Activity.Inactive,
     name: 'غیرفعال',
@@ -18,5 +18,3 @@ const enumList: EnumList = [
     color: 'success'
   }
 ]
-
-export default { enumList, enum: Activity }

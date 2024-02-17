@@ -1,0 +1,17 @@
+.snackbar {
+  &--success > .MuiPaper-root {
+    background-color: green;
+  }
+
+  &--error > .MuiPaper-root {
+    background-color: red;
+  }
+
+  &--info > .MuiPaper-root {
+    background-color: skyblue;
+  }
+
+  &--alert > .MuiPaper-root {
+    background-color: yellow;
+  }
+}
