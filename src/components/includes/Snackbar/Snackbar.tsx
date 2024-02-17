@@ -1,22 +1,48 @@
 import type { SnackbarType } from '@enums/Snackbar'
 import Snackbar from '@mui/material/Snackbar'
-import { useMemo, useState } from 'react'
+import {
+  JSXElementConstructor,
+  PromiseLikeOfReactNode,
+  ReactElement,
+  ReactNode,
+  ReactPortal,
+  useMemo,
+  useState
+} from 'react'
 import { SnackbarContext } from '@context/SnackbarContext'
-type SnackbarContextType = {
-  setOpen: (value: boolean) => void
-  setMessage: (value: string) => void
-  setType: (value: SnackbarType) => void
-}
+import './Snackbar.scss'
 
-export function Snack(props) {
+export function Snack(
+  props: Readonly<{
+    children:
+      | string
+      | number
+      | boolean
+      | ReactElement<any, string | JSXElementConstructor<any>>
+      | Iterable<ReactNode>
+      | ReactPortal
+      | PromiseLikeOfReactNode
+      | null
+      | undefined
+  }>
+) {
   const [open, setOpen] = useState<boolean>(false)
   const [message, setMessage] = useState<string>('')
   const [type, setType] = useState<SnackbarType | null>(null)
+
+  const clear = () => {
+    setOpen(false)
+    setType(null)
+    setMessage('')
+  }
 
   const show = (type: SnackbarType, message: any) => {
     setOpen(true)
     setMessage(message)
     setType(type)
+    setTimeout(() => {
+      clear()
+    }, 5000)
   }
 
   const contextValue: any = useMemo(() => {
