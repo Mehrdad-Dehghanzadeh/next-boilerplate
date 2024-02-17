@@ -20,7 +20,7 @@ export default function Profile() {
   })
   const appStore = useAppStore()
 
-  const { required, maxLength, iban } = useValidations()
+  const { required, maxLength } = useValidations()
   const { snackbar } = useSnackbar()
 
   const onsubmit = (data: FormValues) => {
