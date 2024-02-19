@@ -25,7 +25,7 @@ export default function Profile() {
 
   const onsubmit = (data: FormValues) => {
     appStore.setUser(data)
-    snackbar('info', 'sss')
+    snackbar('error', 'sss')
   }
   return (
     <form className="profile" onSubmit={handleSubmit(onsubmit)}>
