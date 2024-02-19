@@ -42,6 +42,7 @@ export function KTextField({
           onBlur?.(e)
           onBlurField?.(e)
         }}
+        id={`${appName}_${name}_${_id}`}
         name={`${appName}_${name}_${_id}`}
         error={!!fieldState?.invalid}
         helperText={fieldState?.error?.message}
