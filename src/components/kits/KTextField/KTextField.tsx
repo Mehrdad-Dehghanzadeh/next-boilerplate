@@ -1,9 +1,9 @@
-import './KTextField.scss'
 import TextField from '@mui/material/TextField'
+import FormControl, { type FormControlProps } from '@mui/material/FormControl'
 import { useMemo, useId } from 'react'
 import { Controller, type RegisterOptions } from 'react-hook-form'
 
-const appName = process?.env?.APP_NAME
+const appName = process.env.NEXT_PUBLIC_APP_NAME
 
 type PropsType = {
   className?: string
@@ -12,6 +12,8 @@ type PropsType = {
   rules?: RegisterOptions | object
   onBlur?: (e: any) => void
   onChange?: (e: any) => void
+  formControlProps?: FormControlProps
+  helperText: string
   [key: string]: any
 }
 
@@ -20,33 +22,39 @@ export function KTextField({
   control,
   name,
   rules = {},
+  formControlProps = {},
   onBlur,
   onChange,
+  helperText = '',
   ...props
 }: Readonly<PropsType>) {
   const render = ({ field, fieldState }: { field: any; fieldState: any }) => {
     const { onChange: onChangeField, onBlur: onBlurField, ...fieldProps } = field
+
     const _id = useId()
+    const selfId = `${appName}_${name}_${_id}`
+
     let attrs = useMemo(() => {
       return { ...props, ...fieldProps }
     }, [props, fieldProps])
 
     return (
-      <TextField
-        {...attrs}
-        onChange={(e) => {
-          onChange?.(e)
-          onChangeField?.(e)
-        }}
-        onBlur={(e) => {
-          onBlur?.(e)
-          onBlurField?.(e)
-        }}
-        id={`${appName}_${name}_${_id}`}
-        name={`${appName}_${name}_${_id}`}
-        error={!!fieldState?.invalid}
-        helperText={fieldState?.error?.message}
-      />
+      <FormControl {...formControlProps} fullWidth>
+        <TextField
+          {...attrs}
+          onChange={(e) => {
+            onChange?.(e)
+            onChangeField?.(e)
+          }}
+          onBlur={(e) => {
+            onBlur?.(e)
+            onBlurField?.(e)
+          }}
+          name={selfId}
+          error={!!fieldState?.invalid}
+          helperText={fieldState?.error?.message || helperText}
+        />
+      </FormControl>
     )
   }
 

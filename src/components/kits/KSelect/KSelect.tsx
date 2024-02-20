@@ -1,11 +1,12 @@
-import './KSelect.scss'
+import { useMemo, useId } from 'react'
+import { Controller, type RegisterOptions } from 'react-hook-form'
 import Select from '@mui/material/Select'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
-import { useMemo, useId } from 'react'
-import { Controller, type RegisterOptions } from 'react-hook-form'
+import FormControl, { type FormControlProps } from '@mui/material/FormControl'
+import FormHelperText from '@mui/material/FormHelperText'
 
-const appName = process?.env?.APP_NAME
+const appName = process.env.NEXT_PUBLIC_APP_NAME
 
 type PropsType = {
   className?: string
@@ -16,8 +17,10 @@ type PropsType = {
   titleKey?: string
   flatList?: boolean
   label?: string
+  helperText?: string
   rules?: RegisterOptions | object
-  onBlur?: (e: any) => void
+  formControlProps?: FormControlProps
+  onChange?: (e: any) => any
   [key: string]: any
 }
 
@@ -30,13 +33,14 @@ export function KSelect({
   valueKey = 'value',
   titleKey = 'title',
   flatList = false,
+  helperText = '',
   label = '',
+  formControlProps = {},
   onChange,
   ...props
 }: Readonly<PropsType>) {
   const render = ({ field, fieldState }: { field: any; fieldState: any }) => {
     const { onChange: onChangeField, ...fieldProps } = field
-
     const _id = useId()
     let attrs = useMemo(() => {
       return { ...props, ...fieldProps }
@@ -45,13 +49,17 @@ export function KSelect({
     const selfId = `${appName}_${name}_${_id}`
 
     return (
-      <>
-        <InputLabel id={selfId}>{label}</InputLabel>
+      <FormControl {...formControlProps} error={fieldState.invalid} fullWidth>
+        <InputLabel>{label}</InputLabel>
         <Select
           {...attrs}
-          id={selfId}
           name={selfId}
-          helperText={fieldState?.error?.message || ''}
+          labelId={`${selfId}-label`}
+          label={label}
+          onChange={(e) => {
+            onChange?.(e)
+            onChangeField?.(e)
+          }}
         >
           {items.map((el: any) => (
             <MenuItem
@@ -62,7 +70,10 @@ export function KSelect({
             </MenuItem>
           ))}
         </Select>
-      </>
+        {(fieldState?.error?.message || helperText) && (
+          <FormHelperText>{fieldState?.error?.message || helperText}</FormHelperText>
+        )}
+      </FormControl>
     )
   }
 

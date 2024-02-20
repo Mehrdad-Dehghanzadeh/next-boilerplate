@@ -44,6 +44,7 @@ export default function Profile() {
         label="جنسیت"
         control={control}
         name="type"
+        rules={{ required: required() }}
         items={[
           { value: 'm', title: 'مرد' },
           { value: 'f', title: 'زن' }
