@@ -13,7 +13,7 @@ type PropsType = {
   onBlur?: (e: any) => void
   onChange?: (e: any) => void
   formControlProps?: FormControlProps
-  helperText: string
+  helperText?: string
   [key: string]: any
 }
 

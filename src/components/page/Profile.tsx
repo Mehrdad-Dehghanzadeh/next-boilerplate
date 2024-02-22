@@ -17,7 +17,7 @@ export default function Profile() {
     defaultValues: {
       username: 'IR',
       password: '1',
-      type: ''
+      type: 'f'
     }
   })
   const appStore = useAppStore()
