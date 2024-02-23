@@ -1,18 +1,20 @@
+// offer color for light and dark color-hex.com
+
 $colors-common: (
   'black': #000,
   'white': #fff
 );
 
 $colors-primary: (
-  'primary-main': #1976d2,
-  'primary-light': #42a5f5,
-  'primary-dark': #42a5f5
+  'primary-main': #643695,
+  'primary-light': #9272b4,
+  'primary-dark': #462568
 );
 
 $colors-secondary: (
-  'secondary-main': #9c27b0,
-  'secondary-light': #ba68c8,
-  'secondary-dark': #7b1fa2
+  'secondary-main': #a6ce39,
+  'secondary-light': #c0dc74,
+  'secondary-dark': #749027
 );
 
 $colors-error: (
