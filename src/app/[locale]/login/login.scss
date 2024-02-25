@@ -1,0 +1,28 @@
+.login-page {
+  @include flex-row();
+  @include flex-center();
+  min-height: 100vh;
+
+  &__container {
+    flex: 100%;
+    max-width: 480px;
+    padding: 16px;
+    margin: auto;
+  }
+
+  &__card {
+    width: 100%;
+    padding: 16px;
+  }
+
+  &__logo {
+    width: 254px;
+    margin: auto auto 48px;
+  }
+
+  &__footer-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 8px;
+  }
+}
