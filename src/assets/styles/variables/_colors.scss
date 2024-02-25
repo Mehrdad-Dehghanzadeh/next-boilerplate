@@ -24,9 +24,9 @@ $colors-error: (
 );
 
 $colors-warning: (
-  'warning-main': #ed6c02,
-  'warning-light': #ff9800,
-  'warning-dark': #e65100
+  'warning-main': #e5a82f,
+  'warning-light': #ecc26d,
+  'warning-dark': #a07520
 );
 
 $colors-info: (
@@ -39,6 +39,24 @@ $colors-success: (
   'success-main': #2e7d32,
   'success-light': #4caf50,
   'success-dark': #1b5e20
+);
+
+$colors-pink: (
+  'pink-main': #ef5ba1,
+  'pink-light': #f59cc6,
+  'pink-dark': #a73f70
+);
+
+$colors-cyan: (
+  'cyan-main': #46c1be,
+  'cyan-light': #90d9d8,
+  'cyan-dark': #318785
+);
+
+$colors-text: (
+  'text-primary': rgba(0, 0, 0, 0.87),
+  'text-secondary': rgba(0, 0, 0, 0.6),
+  'text-disabled': rgba(0, 0, 0, 0.38)
 );
 
 $colors-gery: (
@@ -66,6 +84,9 @@ $colors: map-collect(
   $colors-warning,
   $colors-info,
   $colors-success,
+  $colors-pink,
+  $colors-cyan,
+  $colors-text,
   $colors-gery,
   $colors-divider
 );
