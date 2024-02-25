@@ -1,18 +1,20 @@
+// offer color for light and dark color-hex.com
+
 $colors-common: (
   'black': #000,
   'white': #fff
 );
 
 $colors-primary: (
-  'primary-main': #1976d2,
-  'primary-light': #42a5f5,
-  'primary-dark': #42a5f5
+  'primary-main': #643695,
+  'primary-light': #9272b4,
+  'primary-dark': #462568
 );
 
 $colors-secondary: (
-  'secondary-main': #9c27b0,
-  'secondary-light': #ba68c8,
-  'secondary-dark': #7b1fa2
+  'secondary-main': #a6ce39,
+  'secondary-light': #c0dc74,
+  'secondary-dark': #749027
 );
 
 $colors-error: (
@@ -22,9 +24,9 @@ $colors-error: (
 );
 
 $colors-warning: (
-  'warning-main': #ed6c02,
-  'warning-light': #ff9800,
-  'warning-dark': #e65100
+  'warning-main': #e5a82f,
+  'warning-light': #ecc26d,
+  'warning-dark': #a07520
 );
 
 $colors-info: (
@@ -37,6 +39,24 @@ $colors-success: (
   'success-main': #2e7d32,
   'success-light': #4caf50,
   'success-dark': #1b5e20
+);
+
+$colors-pink: (
+  'pink-main': #ef5ba1,
+  'pink-light': #f59cc6,
+  'pink-dark': #a73f70
+);
+
+$colors-cyan: (
+  'cyan-main': #46c1be,
+  'cyan-light': #90d9d8,
+  'cyan-dark': #318785
+);
+
+$colors-text: (
+  'text-primary': rgba(0, 0, 0, 0.87),
+  'text-secondary': rgba(0, 0, 0, 0.6),
+  'text-disabled': rgba(0, 0, 0, 0.38)
 );
 
 $colors-gery: (
@@ -64,6 +84,9 @@ $colors: map-collect(
   $colors-warning,
   $colors-info,
   $colors-success,
+  $colors-pink,
+  $colors-cyan,
+  $colors-text,
   $colors-gery,
   $colors-divider
 );
