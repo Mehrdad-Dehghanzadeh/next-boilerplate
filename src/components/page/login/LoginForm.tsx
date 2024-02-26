@@ -6,12 +6,14 @@ import useValidations from '@hooks/useValidations'
 import LoginIcon from '@mui/icons-material/Login'
 import { checkMobile, isEmail } from '@/assets/validations'
 import apis from '@apis'
+import { useState } from 'react'
 
 type FormValues = {
   emailOrphoneNumber: string
   password: string
 }
 export default function LoginForm() {
+  const [loading, setLoading] = useState<boolean>(false)
   const { handleSubmit, control } = useForm<FormValues>({
     defaultValues: {
       emailOrphoneNumber: '',
