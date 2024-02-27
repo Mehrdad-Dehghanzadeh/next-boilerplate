@@ -1,0 +1,17 @@
+@keyframes rotatez {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+.rotatez-animation {
+  display: block;
+  animation-name: rotatez;
+  animation-duration: 800ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}

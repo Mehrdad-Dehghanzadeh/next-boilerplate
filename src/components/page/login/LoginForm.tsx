@@ -1,6 +1,6 @@
 'use client'
 import { useForm } from 'react-hook-form'
-import { KTextField } from '@components-kits'
+import { KTextField, KButton } from '@components-kits'
 import Button from '@mui/material/Button'
 import useValidations from '@hooks/useValidations'
 import LoginIcon from '@mui/icons-material/Login'
@@ -25,6 +25,7 @@ export default function LoginForm() {
 
   const onsubmit = ({ emailOrphoneNumber, password }: FormValues) => {
     if (checkMobile(emailOrphoneNumber)) {
+      setLoading(true)
       apis.auth
         .loginMobile({ password, mobilePhoneNumber: emailOrphoneNumber })
         .then((res: any) => {
@@ -33,9 +34,13 @@ export default function LoginForm() {
         .catch((err: any) => {
           console.log(err)
         })
+        .finally(() => {
+          setLoading(false)
+        })
     }
 
     if (isEmail(emailOrphoneNumber)) {
+      setLoading(true)
       apis.auth
         .loginEmail({ password, email: emailOrphoneNumber })
         .then((res: any) => {
@@ -43,6 +48,9 @@ export default function LoginForm() {
         })
         .catch((err: any) => {
           console.log(err)
+        })
+        .finally(() => {
+          setLoading(false)
         })
     }
   }
@@ -65,14 +73,15 @@ export default function LoginForm() {
         label="کلمه عبور"
       />
 
-      <Button
+      <KButton
+        loading={loading}
         variant="contained"
         type="submit"
         startIcon={<LoginIcon />}
-        sx={{ width: '100%' }}
+        fullWidth
       >
         ورود
-      </Button>
+      </KButton>
     </form>
   )
 }
