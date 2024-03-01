@@ -1,6 +1,6 @@
 'use client'
 import { useForm } from 'react-hook-form'
-import { KTextField, KButton } from '@components-kits'
+import { KTextField, KButton, KPasswordField } from '@components-kits'
 import useValidations from '@hooks/useValidations'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 import apis from '@apis'
@@ -32,7 +32,7 @@ export default function LoginForm() {
       .then(() => {
         snackbar('success', 'ثبت نام شما با موفقیت انجام شد')
       })
-      .catch((err) => {
+      .catch(() => {
         snackbar('error', '')
       })
       .finally(() => {
@@ -60,7 +60,7 @@ export default function LoginForm() {
         placeholder="لطفا ایمیل یا شماره تماس را وارد کنید"
       />
 
-      <KTextField
+      <KPasswordField
         sx={{ marginBottom: '24px' }}
         rules={{ required: required() }}
         control={control}
@@ -69,7 +69,7 @@ export default function LoginForm() {
         label="کلمه عبور"
       />
 
-      <KTextField
+      <KPasswordField
         sx={{ marginBottom: '24px' }}
         rules={{
           required: required(),

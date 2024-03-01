@@ -1,6 +1,6 @@
 'use client'
 import { useForm } from 'react-hook-form'
-import { KTextField, KButton } from '@components-kits'
+import { KTextField, KButton, KPasswordField } from '@components-kits'
 import useValidations from '@hooks/useValidations'
 import LoginIcon from '@mui/icons-material/Login'
 import { checkMobile, isEmail } from '@/assets/validations'
@@ -66,7 +66,7 @@ export default function LoginForm() {
         label="ایمیل یا شماره تماس"
         placeholder="لطفا ایمیل یا شماره تماس را وارد کنید"
       />
-      <KTextField
+      <KPasswordField
         sx={{ marginTop: '24px', marginBottom: '24px' }}
         rules={{ required: required() }}
         control={control}
