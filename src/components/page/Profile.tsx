@@ -1,6 +1,6 @@
 'use client'
 import Button from '@mui/material/Button'
-import { KTextField, KSelect } from '@components-kits'
+import { KTextField, KSelect, KPasswordField } from '@components-kits'
 import { useForm } from 'react-hook-form'
 import useValidations from '@hooks/useValidations'
 import useAppStore from '@store/app'
@@ -32,7 +32,7 @@ export default function Profile() {
   return (
     <form className="profile" onSubmit={handleSubmit(onsubmit)}>
       <KTextField control={control} name="username" label="فیلد یک" />
-      <KTextField
+      <KPasswordField
         rules={{ required: required(), maxLength: maxLength(4) }}
         control={control}
         type="password"
