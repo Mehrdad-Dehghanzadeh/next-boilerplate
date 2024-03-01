@@ -1,18 +1,20 @@
 'use client'
 import { useForm } from 'react-hook-form'
 import { KTextField, KButton } from '@components-kits'
-import Button from '@mui/material/Button'
 import useValidations from '@hooks/useValidations'
 import LoginIcon from '@mui/icons-material/Login'
 import { checkMobile, isEmail } from '@/assets/validations'
 import apis from '@apis'
 import { useState } from 'react'
+import useSnackbar from '@hooks/useSnackbar'
 
 type FormValues = {
   emailOrphoneNumber: string
   password: string
 }
 export default function LoginForm() {
+  const { snackbar } = useSnackbar()
+
   const [loading, setLoading] = useState<boolean>(false)
   const { handleSubmit, control } = useForm<FormValues>({
     defaultValues: {
@@ -32,7 +34,7 @@ export default function LoginForm() {
           console.log(res)
         })
         .catch((err: any) => {
-          console.log(err)
+          snackbar('error', 'مشکل احراز هویت')
         })
         .finally(() => {
           setLoading(false)

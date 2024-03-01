@@ -62,6 +62,11 @@ export default function () {
     return !val || isEmail(val) || checkMobile(val) || t('emailOrMobile')
   }
 
+  function equal(equalValue: string | number | null, name: string) {
+    return (val: string | number | null): Validated =>
+      !val || equalValue == val || t('equal', { name })
+  }
+
   return {
     required,
     maxLength,
@@ -74,6 +79,7 @@ export default function () {
     email,
     mobile,
     phone,
-    emailOrMobile
+    emailOrMobile,
+    equal
   }
 }
