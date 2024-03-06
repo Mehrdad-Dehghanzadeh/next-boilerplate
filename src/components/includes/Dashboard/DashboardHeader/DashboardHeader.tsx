@@ -1,3 +1,10 @@
+import AppBar from '@mui/material/AppBar'
+import Avatar from '@mui/material/Avatar'
+
 export default function DashboardHeader() {
-  return <header className="dashboard-header"></header>
+  return (
+    <AppBar className="dashboard-header">
+      <Avatar />
+    </AppBar>
+  )
 }
