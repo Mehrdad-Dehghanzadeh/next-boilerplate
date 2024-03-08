@@ -1,9 +1,11 @@
+import type { LoginEmailDto, LoginMobileDto } from '@models/Login'
+
 export default ($axios: any) => ({
-  login(payload: any) {
-    return $axios.post('/login', payload)
+  loginMobile(payload: LoginMobileDto) {
+    return $axios.post('/authenticate', payload)
   },
 
-  users() {
-    return $axios.get('/m')
+  loginEmail(payload: LoginEmailDto) {
+    return $axios.post('/authenticate', payload)
   }
 })

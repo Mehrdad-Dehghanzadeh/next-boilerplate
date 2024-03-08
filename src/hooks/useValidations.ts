@@ -5,7 +5,10 @@ import {
   isIban,
   isRealNationalCode,
   isLegalNationalCode,
-  isNationalCode
+  isNationalCode,
+  isEmail,
+  checkPhone,
+  checkMobile
 } from '@assets/validations'
 
 export default function () {
@@ -35,15 +38,34 @@ export default function () {
     return !val || isRealNationalCode(val) || t('realNationalCode')
   }
 
-  
   function legalNationalCode(val: string | null): Validated {
     return !val || isLegalNationalCode(val) || t('legalNationalCode')
   }
 
+  function nationalCode(val: string | null): Validated {
+    return !val || isNationalCode(val) || t('nationalCode')
+  }
 
-    function nationalCode(val: string | null): Validated {
-      return !val || isNationalCode(val) || t('nationalCode')
-    }
+  function email(val: string | null): Validated {
+    return !val || isEmail(val) || t('email')
+  }
+
+  function mobile(val: string | null): Validated {
+    return !val || checkMobile(val) || t('mobile')
+  }
+
+  function phone(val: string | null): Validated {
+    return !val || checkPhone(val) || t('phone')
+  }
+
+  function emailOrMobile(val: string | null): Validated {
+    return !val || isEmail(val) || checkMobile(val) || t('emailOrMobile')
+  }
+
+  function equal(equalValue: string | number | null, name: string) {
+    return (val: string | number | null): Validated =>
+      !val || equalValue == val || t('equal', { name })
+  }
 
   return {
     required,
@@ -53,6 +75,11 @@ export default function () {
     iban,
     realNationalCode,
     legalNationalCode,
-    nationalCode
+    nationalCode,
+    email,
+    mobile,
+    phone,
+    emailOrMobile,
+    equal
   }
 }
