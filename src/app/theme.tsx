@@ -10,6 +10,7 @@ import { Snack } from '@components-includes'
 const theme = createTheme(
   {
     direction: 'rtl',
+    
     palette: {
       primary: {
         main: '#643695',
@@ -28,6 +29,10 @@ const theme = createTheme(
         light: '#ecc26d',
         dark: '#a07520'
       }
+    },
+
+    typography: {
+      fontFamily:`'IranSans', 'sans-serif'`
     }
   },
   faIR
