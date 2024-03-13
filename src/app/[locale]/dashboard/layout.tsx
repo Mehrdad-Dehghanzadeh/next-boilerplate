@@ -3,12 +3,14 @@ import DashboardHeader from '@components-includes/Dashboard/DashboardHeader/Dash
 import DashboardNav from '@components-includes/Dashboard/DashboardNav/DashboardNav'
 import Container from '@mui/material/Container'
 import { authenticate } from '@utils/auth'
+import './DashboardLayout.scss'
+
 type PropsType = {
   children: React.ReactNode
 }
 
 export default async function DashboardLayout({ children }: Readonly<PropsType>) {
-  authenticate()
+  // authenticate()
 
   return (
     <div className="dashboard-layout">

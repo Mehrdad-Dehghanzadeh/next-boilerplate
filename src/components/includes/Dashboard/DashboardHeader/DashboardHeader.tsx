@@ -3,8 +3,8 @@ import Avatar from '@mui/material/Avatar'
 
 export default function DashboardHeader() {
   return (
-    <AppBar className="dashboard-header">
+    <header className="dashboard-header">
       <Avatar />
-    </AppBar>
+    </header>
   )
 }

@@ -5,6 +5,10 @@ $colors-common: (
   'white': #fff
 );
 
+$colors-bg: (
+  'bg-dashobard-layout': #ebf1f4
+);
+
 $colors-primary: (
   'primary-main': #643695,
   'primary-light': #9272b4,
@@ -88,7 +92,8 @@ $colors: map-collect(
   $colors-cyan,
   $colors-text,
   $colors-gery,
-  $colors-divider
+  $colors-divider,
+  $colors-bg
 );
 
 :root {
