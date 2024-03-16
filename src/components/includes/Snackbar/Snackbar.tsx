@@ -1,29 +1,12 @@
 import type { SnackbarType } from '@enums/Snackbar'
 import Snackbar from '@mui/material/Snackbar'
-import {
-  JSXElementConstructor,
-  PromiseLikeOfReactNode,
-  ReactElement,
-  ReactNode,
-  ReactPortal,
-  useMemo,
-  useState
-} from 'react'
+import { useMemo, useState } from 'react'
 import { SnackbarContext } from '@context/SnackbarContext'
 import './Snackbar.scss'
 
 export function Snack(
   props: Readonly<{
-    children:
-      | string
-      | number
-      | boolean
-      | ReactElement<any, string | JSXElementConstructor<any>>
-      | Iterable<ReactNode>
-      | ReactPortal
-      | PromiseLikeOfReactNode
-      | null
-      | undefined
+    children: React.ReactNode
   }>
 ) {
   const [open, setOpen] = useState<boolean>(false)

@@ -1,2 +1,10 @@
 .dashboard-nav {
+  &-list {
+    width: 100%;
+
+    &__icon {
+      padding-left: 12px;
+      min-width: auto !important;
+    }
+  }
 }

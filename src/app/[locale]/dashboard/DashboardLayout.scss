@@ -1,6 +1,36 @@
-.dashboard-layout {
-  background-color: var(--color-bg-dashobard-layout);
-  min-height: 100vh;
-  position: relative;
-  padding: 30px 20px 20px;
+.dashboard {
+  &-layout {
+    background-color: var(--color-bg-dashobard-layout);
+    min-height: 100vh;
+    position: relative;
+    gap: 16px;
+    padding: 30px 20px 20px;
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    grid-template-rows: map-get($layout-sizes, 'header-height') auto map-get(
+        $layout-sizes,
+        'footer-height'
+      );
+    grid-template-areas:
+      'nav header'
+      'nav main'
+      '. footer';
+  }
+
+  &-nav {
+    grid-area: nav;
+  }
+
+  &-header {
+    grid-area: header;
+  }
+
+  &-main {
+    display: block;
+    grid-area: main;
+  }
+
+  &-footer {
+    grid-area: footer;
+  }
 }
