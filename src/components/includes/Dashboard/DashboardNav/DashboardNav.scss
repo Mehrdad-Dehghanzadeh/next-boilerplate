@@ -7,4 +7,15 @@
       min-width: auto !important;
     }
   }
+
+  &__top {
+    padding: 24px 8px;
+  }
+
+  &__logo {
+    object-fit: contain;
+    width: 80%;
+    display: block;
+    margin: auto;
+  }
 }

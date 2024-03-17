@@ -10,7 +10,7 @@ type PropsType = {
 }
 
 export default async function DashboardLayout({ children }: Readonly<PropsType>) {
-  authenticate()
+  // authenticate()
 
   return (
     <div className="dashboard-layout">
