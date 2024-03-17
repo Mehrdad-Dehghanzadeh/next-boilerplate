@@ -1,0 +1,11 @@
+.k-stepper {
+  overflow: hidden;
+  
+  &__item {
+    display: none;
+
+    &--show {
+      display: block;
+    }
+  }
+}
