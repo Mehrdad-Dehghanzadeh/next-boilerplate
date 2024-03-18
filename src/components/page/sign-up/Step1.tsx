@@ -1,6 +1,6 @@
 'use client'
 import { useForm } from 'react-hook-form'
-import { KTextField, KButton, KPasswordField } from '@components-kits'
+import { KTextField, KButton, KPasswordField, KDatePicker } from '@components-kits'
 import useValidations from '@hooks/useValidations'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 import apis from '@apis'
@@ -11,7 +11,8 @@ type FormValues = {
   mobilePhoneNumber: string
   password: string
   email: string
-  rePassword: string
+  rePassword: string,
+  date: string | null
 }
 
 type Props = {
@@ -23,12 +24,13 @@ export default function Step1({ setActiveStep }: Readonly<Props>) {
 
   const [loading, setLoading] = useState<boolean>(false)
   const { handleSubmit, control, watch } = useForm<FormValues>({
-    defaultValues: {}
+    defaultValues: {date: '1992-04-04'}
   })
 
   const { required, email, mobile } = useValidations()
 
-  const onsubmit = ({ mobilePhoneNumber, password, email }: FormValues) => {
+  const onsubmit = ({ mobilePhoneNumber, password, email, date }: FormValues) => {
+    console.log(date)
     const payload = { mobilePhoneNumber, password, email }
     // setLoading(true)
     setActiveStep(1)
@@ -86,6 +88,8 @@ export default function Step1({ setActiveStep }: Readonly<Props>) {
         name="rePassword"
         label="تکرار کلمه عبور"
       />
+
+      <KDatePicker control={control} name="date" />
 
       <KButton
         loading={loading}
