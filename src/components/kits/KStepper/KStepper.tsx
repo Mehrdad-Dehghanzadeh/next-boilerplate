@@ -1,4 +1,3 @@
-import Slide from '@mui/material/Slide'
 import { useId, useEffect } from 'react'
 import './KStepper.scss'
 
@@ -12,7 +11,7 @@ type Props = {
 
 export function KStepper({
   children,
-  activeStep,
+  activeStep = 0,
   callBackUpdateStep,
   className = '',
   ...props
@@ -27,22 +26,21 @@ export function KStepper({
 
   return (
     <div className={`k-stepper ${className}`} {...props}>
-      {children.map((el: any, index: number) => (
-        <Slide
-          direction={index >= activeStep ? 'left' : 'right'}
-          key={`k-stepper-${selfId}-${index}`}
-          in={index === activeStep}
-          appear={index === activeStep}
-        >
+      <div
+        className="k-stepper__wrapper"
+        style={{ transform: `translateX(${activeStep * 100}%)` }}
+      >
+        {children.map((el: any, index: number) => (
           <div
+            key={`k-stepper-${selfId}-${index}`}
             className={`k-stepper__item ${
               index === activeStep ? 'k-stepper__item--show' : ''
             }`}
           >
             {el}
           </div>
-        </Slide>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }

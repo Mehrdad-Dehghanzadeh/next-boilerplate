@@ -3,7 +3,7 @@ import Divider from '@mui/material/Divider'
 import Link from 'next/link'
 import LockResetOutlinedIcon from '@mui/icons-material/LockResetOutlined'
 import LoginIcon from '@mui/icons-material/Login'
-import SignUpSteppr from '@components/page/sign-up/Stepper'
+import SignUpSteppr from '@components-page/sign-up/Stepper'
 
 export default function SignUp() {
 
@@ -15,7 +15,9 @@ export default function SignUp() {
             <img src="/images/Feeleasylogo-main.svg" alt="logo" />
             <h1 className="text-center">ثبت نام در سایت</h1>
           </div>
-          <SignUpSteppr />
+
+          <SignUpSteppr  />
+
           <Divider sx={{ marginTop: '16px' }} />
           <div className="auth-pages__footer-card">
             <Link href="/forget-password">

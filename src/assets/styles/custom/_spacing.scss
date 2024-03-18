@@ -1,0 +1,30 @@
+//add auto class
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// adding margin class
+@for $i from 0 through 16 {
+  @include make-margin(top, $i);
+  @include make-margin(right, $i);
+  @include make-margin(bottom, $i);
+  @include make-margin(left, $i);
+  @include make-margin('x', $i);
+  @include make-margin('y', $i);
+}
+
+// adding padding class
+@for $i from 0 through 16 {
+  @include make-padding(top, $i);
+  @include make-padding(right, $i);
+  @include make-padding(bottom, $i);
+  @include make-padding(left, $i);
+  @include make-padding('x', $i);
+  @include make-padding('y', $i);
+}

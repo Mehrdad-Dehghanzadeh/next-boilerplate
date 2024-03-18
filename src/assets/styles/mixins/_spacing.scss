@@ -1,0 +1,75 @@
+/**
+* margin distance
+ **************************/
+
+@mixin make-margin($point, $value) {
+  $val: $value * 4 + px;
+
+  @if $point == top {
+    .mt-#{$value} {
+      margin-top: $val;
+    }
+  } @else if $point == right {
+    .mr-#{$value} {
+      margin-right: $val;
+    }
+  } @else if $point == bottom {
+    .mb-#{$value} {
+      margin-bottom: $val;
+    }
+  } @else if $point == left {
+    .ml-#{$value} {
+      margin-left: $val;
+    }
+  } @else if $point == 'x' {
+    .mx-#{$value} {
+      margin-right: $val;
+      margin-left: $val;
+    }
+  } @else if $point == 'y' {
+    .my-#{$value} {
+      margin-top: $val;
+      margin-bottom: $val;
+    }
+  } @else {
+    @error "Unknown direction #{$point}.";
+  }
+}
+
+/**
+* padding distance
+ **************************/
+
+@mixin make-padding($point, $value) {
+  $val: $value * 4 + px;
+
+  @if $point == top {
+    .pt-#{$value} {
+      padding-top: $val;
+    }
+  } @else if $point == right {
+    .pr-#{$value} {
+      padding-right: $val;
+    }
+  } @else if $point == bottom {
+    .pb-#{$value} {
+      padding-bottom: $val;
+    }
+  } @else if $point == left {
+    .pl-#{$value} {
+      padding-left: $val;
+    }
+  } @else if $point == 'x' {
+    .px-#{$value} {
+      padding-right: $val;
+      padding-left: $val;
+    }
+  } @else if $point == 'y' {
+    .py-#{$value} {
+      padding-top: $val;
+      padding-bottom: $val;
+    }
+  } @else {
+    @error "Unknown direction #{$point}.";
+  }
+}

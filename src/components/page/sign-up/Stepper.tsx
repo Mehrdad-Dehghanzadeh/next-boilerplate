@@ -8,12 +8,9 @@ export default function SignUpSteppr() {
   const [activeStep, setActiveStep] = useState<number>(0)
 
   return (
-    <div className="">
-      <KStepper activeStep={activeStep}>
-        <Step1 setActiveStep={setActiveStep} />
-
-        <Step2 setActiveStep={setActiveStep} />
-      </KStepper>
-    </div>
+    <KStepper activeStep={activeStep}>
+      <Step1 setActiveStep={setActiveStep} />
+      <Step2 setActiveStep={setActiveStep} />
+    </KStepper>
   )
 }
