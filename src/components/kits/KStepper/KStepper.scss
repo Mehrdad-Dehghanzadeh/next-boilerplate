@@ -1,0 +1,14 @@
+.k-stepper {
+  overflow: hidden;
+
+  &__wrapper {
+    display: flex;
+    transform: translateX(0);
+    transition: transform ease-out 300ms;
+  }
+
+  &__item {
+    padding: 8px;
+    flex: 0 0 100%;
+  }
+}
