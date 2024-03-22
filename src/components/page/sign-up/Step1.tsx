@@ -4,15 +4,15 @@ import { KTextField, KButton, KPasswordField, KDatePicker } from '@components-ki
 import useValidations from '@hooks/useValidations'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 import apis from '@apis'
-import { useState, type Dispatch } from 'react'
+import { useState } from 'react'
 import useSnackbar from '@hooks/useSnackbar'
 
 type FormValues = {
   mobilePhoneNumber: string
   password: string
   email: string
-  rePassword: string,
-  date: string | null
+  rePassword: string
+  date: Date | null
 }
 
 type Props = {
@@ -24,7 +24,7 @@ export default function Step1({ setActiveStep }: Readonly<Props>) {
 
   const [loading, setLoading] = useState<boolean>(false)
   const { handleSubmit, control, watch } = useForm<FormValues>({
-    defaultValues: {date: '1992-04-04'}
+    defaultValues: {  }
   })
 
   const { required, email, mobile } = useValidations()
@@ -89,7 +89,7 @@ export default function Step1({ setActiveStep }: Readonly<Props>) {
         label="تکرار کلمه عبور"
       />
 
-      <KDatePicker control={control} name="date" />
+      <KDatePicker rules={{ required: required() }} control={control} name="date" />
 
       <KButton
         loading={loading}

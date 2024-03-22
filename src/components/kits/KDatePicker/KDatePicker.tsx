@@ -3,7 +3,9 @@ import { AdapterDateFnsJalali } from '@mui/x-date-pickers/AdapterDateFnsJalali'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import FormControl, { type FormControlProps } from '@mui/material/FormControl'
 import { Controller, type RegisterOptions } from 'react-hook-form'
-import { useMemo, useId } from 'react'
+import { useMemo, useId, useState } from 'react'
+import { DateValidationError } from '@mui/x-date-pickers/models'
+import { useTranslations } from 'next-intl'
 
 const appName = process.env.NEXT_PUBLIC_APP_NAME
 
@@ -27,6 +29,7 @@ export function KDatePicker({
   formControlProps = {},
   onBlur,
   onChange,
+  onFocus,
   helperText = '',
   ...props
 }: Readonly<PropsType>) {
@@ -39,6 +42,10 @@ export function KDatePicker({
     let attrs = useMemo(() => {
       return { ...props, ...fieldProps }
     }, [props, fieldProps])
+    const t = useTranslations('errors.validations')
+
+    const [error, setError] = useState<DateValidationError | null>(null)
+    let errorMessage = useMemo(() => (error ? t(error) : ''), [error])
 
     return (
       <FormControl {...formControlProps} fullWidth>
@@ -53,8 +60,17 @@ export function KDatePicker({
               onBlur?.(e)
               onBlurField?.(e)
             }}
-            name={selfId}
-            error={!!fieldState?.invalid}
+            slotProps={{
+              textField: {
+                helperText: fieldState?.error?.message || helperText || errorMessage,
+                error: !!fieldState?.invalid,
+                name: selfId,
+                inputmode: '"numeric"'
+              }
+            }}
+            onError={(e) => {
+              setError(e)
+            }}
             helperText={fieldState?.error?.message || helperText}
           />
         </LocalizationProvider>
@@ -62,10 +78,9 @@ export function KDatePicker({
     )
   }
 
-  let defaultValue = useMemo(
-    () => control?._defaultValues?.[name] || '',
-    [control?._defaultValues]
-  )
+  let defaultValue = useMemo(() => {
+    return control?._defaultValues?.[name] ? new Date(control._defaultValues[name]) : null
+  }, [control?._defaultValues])
 
   return (
     <div className="k-date-picker" dir="rtl">
