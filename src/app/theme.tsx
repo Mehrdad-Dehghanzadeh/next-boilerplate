@@ -7,7 +7,7 @@ import rtlPlugin from 'stylis-plugin-rtl'
 import { prefixer } from 'stylis'
 import { Snack } from '@components-includes'
 
-const theme = createTheme(
+export const theme = createTheme(
   {
     direction: 'rtl',
     
