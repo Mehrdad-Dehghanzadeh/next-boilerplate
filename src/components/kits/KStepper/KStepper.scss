@@ -10,5 +10,12 @@
   &__item {
     padding: 8px;
     flex: 0 0 100%;
+    visibility: hidden;
+    height: 0;
+
+    &--show {
+      height: auto;
+      visibility: visible;
+    }
   }
 }
