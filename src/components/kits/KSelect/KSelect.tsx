@@ -5,8 +5,8 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl, { type FormControlProps } from '@mui/material/FormControl'
 import FormHelperText from '@mui/material/FormHelperText'
-import Checkbox from '@mui/material/Checkbox'
 import ListItemText from '@mui/material/ListItemText'
+import './KSelect.scss'
 
 const appName = process.env.NEXT_PUBLIC_APP_NAME
 
@@ -77,14 +77,7 @@ export function KSelect({
 
             return (
               <MenuItem key={`key-${_id}-${value}`} value={value}>
-                {multiple ? (
-                  <>
-                    <Checkbox checked={itemValue.indexOf(value) > -1} />
-                    <ListItemText primary={title} />
-                  </>
-                ) : (
-                  value
-                )}
+                {multiple ? <ListItemText primary={title} /> : value}
               </MenuItem>
             )
           })}

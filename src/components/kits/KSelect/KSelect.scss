@@ -1,0 +1,11 @@
+.k-select .MuiSelect-select {
+  display: flex;
+}
+
+.k-select .muirtl-tlelie-MuiListItemText-root {
+  flex: initial;
+
+  &:not(:first-child) {
+    margin-right: 4px;
+  }
+}
