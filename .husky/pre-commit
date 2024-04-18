@@ -1,1 +1,2 @@
 npm run prepare
+npx lint-staged
