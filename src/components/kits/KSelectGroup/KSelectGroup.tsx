@@ -6,7 +6,8 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl, { type FormControlProps } from '@mui/material/FormControl'
 import FormHelperText from '@mui/material/FormHelperText'
 import ListItemText from '@mui/material/ListItemText'
-import './KSelect.scss'
+import ListSubheader from '@mui/material/ListSubheader'
+import './KSelectGroup.scss'
 
 const appName = process.env.NEXT_PUBLIC_APP_NAME
 
@@ -17,6 +18,8 @@ type PropsType = {
   items: any[]
   valueKey?: string
   titleKey?: string
+  childernKey?: string
+  childernTitle?: string
   flatList?: boolean
   label?: string
   helperText?: string
@@ -27,7 +30,7 @@ type PropsType = {
   [key: string]: any
 }
 
-export function KSelect({
+export function KSelectGrouping({
   className = '',
   control,
   name,
@@ -35,6 +38,8 @@ export function KSelect({
   items = [],
   valueKey = 'value',
   titleKey = 'title',
+  childernKey = 'childern',
+  childernTitle = '',
   flatList = false,
   helperText = '',
   label = '',
@@ -45,7 +50,6 @@ export function KSelect({
 }: Readonly<PropsType>) {
   const render = ({ field, fieldState }: { field: any; fieldState: any }) => {
     const { onChange: onChangeField, ...fieldProps } = field
-    const [itemValue, setItemValue] = useState<any[]>([])
     const _id = useId()
     let attrs = useMemo(() => {
       return { ...props, ...fieldProps }
@@ -64,22 +68,25 @@ export function KSelect({
           labelId={`${selfId}-label`}
           label={label}
           onChange={(e) => {
-            if (multiple) {
-              setItemValue([...itemValue, e?.target?.value])
-            }
             onChange?.(e)
             onChangeField?.(e)
           }}
         >
           {items.map((el: any) => {
-            const value = flatList ? el : el[valueKey]
-            const title = flatList ? el : el[titleKey]
+            const title = el[titleKey]
 
-            return (
-              <MenuItem key={`key-${_id}-${value}`} value={value}>
-                {multiple ? <ListItemText primary={title} /> : title}
-              </MenuItem>
-            )
+            return [
+              <ListSubheader key={`key-${_id}-${title}`}>{title}</ListSubheader>,
+              el?.[childernKey]?.map((child: any) => {
+                const value = flatList ? child : child[valueKey]
+                const title = flatList ? child : child[titleKey]
+                return (
+                  <MenuItem key={`key-${_id}-${value}`} value={value}>
+                    {multiple ? <ListItemText primary={title} /> : title}
+                  </MenuItem>
+                )
+              })
+            ]
           })}
         </Select>
         {(fieldState?.error?.message || helperText) && (
@@ -95,7 +102,7 @@ export function KSelect({
   )
 
   return (
-    <div className={`k-select ${className}`}>
+    <div className={`k-select-group ${className}`}>
       <Controller
         defaultValue={defaultValue}
         control={control}

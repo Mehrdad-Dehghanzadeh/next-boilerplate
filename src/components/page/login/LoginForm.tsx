@@ -1,6 +1,6 @@
 'use client'
 import { useForm } from 'react-hook-form'
-import { KTextField, KButton, KPasswordField, KSelect } from '@components-kits'
+import { KTextField, KButton, KPasswordField, KSelectGrouping } from '@components-kits'
 import useValidations from '@hooks/useValidations'
 import LoginIcon from '@mui/icons-material/Login'
 import { checkMobile, isEmail } from '@/assets/validations'
@@ -14,7 +14,7 @@ import { setToken } from '@utils/auth'
 type FormValues = {
   emailOrphoneNumber: string
   password: string
-  select: any[]
+  select: any
 }
 const jwt =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMWIwZmJmOWUtY2M5Zi00MzVlLWE0YWEtMzllZWQ2NTJmNTI2IiwiZmlyc3ROYW1lIjpudWxsLCJsYXN0TmFtZSI6bnVsbCwibmF0aW9uYWxDYXJkIjpudWxsLCJpZGVudGl0eUNhcmQiOm51bGwsImNvbnRhY3RJbmZvIjp7Im1vYmlsZVBob25lTnVtYmVyIjoiMDkzNTU5Mzk2MDIiLCJsYW5kbGluZVBob25lTnVtYmVyIjpudWxsLCJlbWFpbEFkZHJlc3MiOiJleGFtcGxlQGV4YW1wbGVsLmNvbSJ9LCJwZXJzb25hbEluZm8iOm51bGwsInBvc3RhbEFkZHJlc3MiOm51bGwsImV4cCI6MTcwOTkyMDQ3NDUxMX0.1Gtas6KK25duBimyAY5tRWecZtzOy_dcpcUkw_xGrZQ1'
@@ -87,18 +87,32 @@ export default function LoginForm() {
         label="کلمه عبور"
       />
 
-      <KSelect
+      <KSelectGrouping
         items={[
-          { value: '1', title: '1-1' },
-          { value: '2', title: '2-2' },
-          { value: '3', title: '3-3' },
-
+          {
+            value: '1',
+            title: '1-1',
+            childern: [
+              { title: 'child 1.1', value: 1.1 },
+              { title: 'child 1.2', value: 1.2 }
+            ]
+          },
+          {
+            value: '2',
+            title: '2-2',
+            childern: [
+              { title: 'child 2.1', value: 2.1 },
+              { title: 'child 2.2', value: 2.2 },
+              { title: 'child 2.3', value: 2.3 }
+            ]
+          },
+          { value: '3', title: '3-3' }
         ]}
         name="select"
         rules={{ required: required() }}
         control={control}
         label="نوع کلمه عبور"
-        multiple={true}
+        multiple
       />
 
       <KButton
