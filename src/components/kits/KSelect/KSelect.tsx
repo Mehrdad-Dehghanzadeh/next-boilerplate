@@ -1,10 +1,12 @@
-import { useMemo, useId } from 'react'
+import { useMemo, useId, useState } from 'react'
 import { Controller, type RegisterOptions } from 'react-hook-form'
 import Select from '@mui/material/Select'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl, { type FormControlProps } from '@mui/material/FormControl'
 import FormHelperText from '@mui/material/FormHelperText'
+import Checkbox from '@mui/material/Checkbox'
+import ListItemText from '@mui/material/ListItemText'
 
 const appName = process.env.NEXT_PUBLIC_APP_NAME
 
@@ -20,6 +22,7 @@ type PropsType = {
   helperText?: string
   rules?: RegisterOptions | object
   formControlProps?: FormControlProps
+  multiple?: boolean
   onChange?: (e: any) => any
   [key: string]: any
 }
@@ -35,12 +38,14 @@ export function KSelect({
   flatList = false,
   helperText = '',
   label = '',
+  multiple = false,
   formControlProps = {},
   onChange,
   ...props
 }: Readonly<PropsType>) {
   const render = ({ field, fieldState }: { field: any; fieldState: any }) => {
     const { onChange: onChangeField, ...fieldProps } = field
+    const [itemValue, setItemValue] = useState<any[]>([])
     const _id = useId()
     let attrs = useMemo(() => {
       return { ...props, ...fieldProps }
@@ -51,24 +56,38 @@ export function KSelect({
     return (
       <FormControl {...formControlProps} error={fieldState.invalid} fullWidth>
         <InputLabel>{label}</InputLabel>
+
         <Select
           {...attrs}
           name={selfId}
+          multiple={multiple}
           labelId={`${selfId}-label`}
           label={label}
           onChange={(e) => {
+            if (multiple) {
+              setItemValue([...itemValue, e?.target?.value])
+            }
             onChange?.(e)
             onChangeField?.(e)
           }}
         >
-          {items.map((el: any) => (
-            <MenuItem
-              key={`key-${_id}-${flatList ? el : el[valueKey]}`}
-              value={flatList ? el : el[valueKey]}
-            >
-              {flatList ? el : el[titleKey]}
-            </MenuItem>
-          ))}
+          {items.map((el: any) => {
+            const value = flatList ? el : el[valueKey]
+            const title = flatList ? el : el[titleKey]
+
+            return (
+              <MenuItem key={`key-${_id}-${value}`} value={value}>
+                {multiple ? (
+                  <>
+                    <Checkbox checked={itemValue.indexOf(value) > -1} />
+                    <ListItemText primary={title} />
+                  </>
+                ) : (
+                  value
+                )}
+              </MenuItem>
+            )
+          })}
         </Select>
         {(fieldState?.error?.message || helperText) && (
           <FormHelperText>{fieldState?.error?.message || helperText}</FormHelperText>
