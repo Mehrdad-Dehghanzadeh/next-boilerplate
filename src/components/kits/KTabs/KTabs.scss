@@ -1,0 +1,21 @@
+.k-tabs {
+  &__tabs {
+    flex: 0 0 auto;
+    margin-bottom: 32px;
+  }
+
+  &__panel {
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &--vertical {
+    display: flex;
+
+    .k-tabs__panel {
+      flex: 1 1 100%;
+      padding-right: 16px;
+    }
+  }
+}
