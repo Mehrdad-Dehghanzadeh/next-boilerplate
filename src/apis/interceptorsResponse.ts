@@ -35,8 +35,8 @@ export default ($axios: AxiosInstance) => {
     },
 
     function (err) {
-      const error = mapStatusMessageOnResponseError(err)
-      return Promise.reject(error)
+      // const error = mapStatusMessageOnResponseError(err)
+      return Promise.reject(err?.response)
     }
   )
 }
