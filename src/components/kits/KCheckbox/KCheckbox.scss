@@ -1,0 +1,12 @@
+.k-checkbox {
+  @include inline-block();
+
+  &__form-control {
+    flex-direction: row !important;
+    align-items: center;
+  }
+
+  &__label {
+    cursor: pointer;
+  }
+}
