@@ -40,6 +40,12 @@
       "@data/*": ["./src/assets/data/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "./src/ts/global.d.ts"
+  ],
   "exclude": ["node_modules"]
 }
