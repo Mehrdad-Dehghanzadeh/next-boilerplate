@@ -76,3 +76,31 @@ export function getValueObject(obj: any, prop: string): any {
 
   return obj[prop]
 }
+
+/**
+ * check input is object
+ ************************************************/
+export function isObject(obj: unknown): boolean {
+  return (typeof obj === 'object' || typeof obj === 'function') && obj !== null
+}
+
+/**
+ * get value object and subObject in this object such as obj[0].max
+ **********************************************************************/
+export function getValue(obj: Record<string, any>, prop: string): any {
+  if (isObject(obj) && typeof prop === 'string' && prop) {
+    return prop
+      .replaceAll('[', '.')
+      .replaceAll(']', '')
+      .split('.')
+      .reduce((field, key) => field?.[key], obj)
+  }
+
+  if (!prop) {
+    console.error('prop is not valid')
+  }
+
+  if (!isObject(obj)) {
+    console.error('object is not valid')
+  }
+}
