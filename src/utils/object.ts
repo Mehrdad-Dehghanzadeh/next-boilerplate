@@ -87,7 +87,7 @@ export function isObject(obj: unknown): boolean {
 /**
  * get value object and subObject in this object such as obj[0].max
  **********************************************************************/
-export function getValue(obj: TObject, prop: string) {
+export function getValue(obj: TData, prop: string) {
   if (isObject(obj) && typeof prop === 'string' && prop) {
     return prop
       .replaceAll('[', '.')
