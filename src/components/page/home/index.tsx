@@ -9,7 +9,7 @@ export default function Home() {
     {
       field: 'friends',
       headerName: 'دوستان',
-      valueGetter: (value) => {
+      valueGetter: (value: any) => {
         return <span>{value?.join(' ')}</span>
       }
     }

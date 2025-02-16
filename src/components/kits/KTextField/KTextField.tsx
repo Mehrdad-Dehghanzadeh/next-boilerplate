@@ -2,6 +2,7 @@ import TextField from '@mui/material/TextField'
 import FormControl, { type FormControlProps } from '@mui/material/FormControl'
 import { useMemo, useId } from 'react'
 import { Controller, type RegisterOptions } from 'react-hook-form'
+import { convertNumber } from '@/utils/text'
 
 const appName = process.env.NEXT_PUBLIC_APP_NAME
 
@@ -14,6 +15,7 @@ type PropsType = {
   onChange?: (e: any) => void
   formControlProps?: FormControlProps
   helperText?: string
+  isConvertPersianNumber?: boolean
   [key: string]: any
 }
 
@@ -26,6 +28,7 @@ export function KTextField({
   onBlur,
   onChange,
   helperText = '',
+  isConvertPersianNumber = true,
   ...props
 }: Readonly<PropsType>) {
   const render = ({ field, fieldState }: { field: any; fieldState: any }) => {
@@ -47,6 +50,9 @@ export function KTextField({
             onChangeField?.(e)
           }}
           onBlur={(e) => {
+            if (isConvertPersianNumber) {
+              e.target.value = convertNumber(e.target.value ?? '')
+            }
             onBlur?.(e)
             onBlurField?.(e)
           }}
