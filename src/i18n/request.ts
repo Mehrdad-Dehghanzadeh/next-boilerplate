@@ -1,7 +1,7 @@
 import { getRequestConfig } from 'next-intl/server'
 
 // Can be imported from a shared config
-export const defaultLocale = 'fa'
+export const defaultLocale = 'fa-IR'
 export const locales = [defaultLocale]
 
 export default getRequestConfig(async () => {
