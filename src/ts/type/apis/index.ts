@@ -6,4 +6,10 @@ export type TApis = {
   users: ReturnType<TUsersApi>
 }
 
-export type Resource = keyof TApis
+export type UsersApiMethods = keyof ReturnType<TUsersApi>
+
+export type AuthApiMethods = keyof ReturnType<TAuthApis>
+
+export type ApiMethods = UsersApiMethods | AuthApiMethods
+
+export type ApiResources = keyof TApis

@@ -1,4 +1,4 @@
-import { type Resource } from '@apis-type/index'
+import type { ApiResources, ApiMethods } from '@apis-type/index'
 import { useEffect, useState, forwardRef, useImperativeHandle } from 'react'
 import { DataGrid, type DataGridProps } from '@mui/x-data-grid'
 import useSnackbar from '@hooks/useSnackbar'
@@ -6,8 +6,8 @@ import apis from '@apis'
 import './KDataGridServer.scss'
 
 interface Props extends DataGridProps {
-  resource: Resource
-  method?: string
+  resource: ApiResources
+  method: ApiMethods | 'read'
   refresh?: (callback: () => void) => void
   params?: Record<string, any>
   responseDataField?: string
