@@ -7,7 +7,7 @@ import { checkMobile, isEmail } from '@/assets/validations'
 import apis from '@apis'
 import { useState } from 'react'
 import useSnackbar from '@hooks/useSnackbar'
-import type { LoginEmailDto, LoginMobileDto } from '@models/Login'
+import type { LoginEmailModel, LoginMobileModel } from '@models/Login'
 import { useRouter } from 'next/navigation'
 import { setToken } from '@utils/auth'
 
@@ -34,7 +34,7 @@ export default function LoginForm() {
 
   const { required, emailOrMobile } = useValidations()
 
-  const loginWithMobile = async (payload: LoginMobileDto) => {
+  const loginWithMobile = async (payload: LoginMobileModel) => {
     try {
       setLoading(true)
       await apis.auth.loginMobile(payload)
@@ -47,7 +47,7 @@ export default function LoginForm() {
     }
   }
 
-  const loginWithEmail = async (payload: LoginEmailDto) => {
+  const loginWithEmail = async (payload: LoginEmailModel) => {
     try {
       setLoading(true)
       await apis.auth.loginEmail(payload)

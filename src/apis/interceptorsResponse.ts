@@ -1,6 +1,4 @@
-import { type AxiosInstance, AxiosResponse, AxiosError } from 'axios'
-import { useTranslations } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { type AxiosInstance, AxiosResponse } from 'axios'
 
 async function mapStatusMessageOnResponse(res: AxiosResponse) {
   const status = String(res?.status || '')
@@ -12,19 +10,6 @@ async function mapStatusMessageOnResponse(res: AxiosResponse) {
     // statusMessage: t(status),
     ...res
   }
-}
-
-async function mapStatusMessageOnResponseError(err: AxiosError) {
-  const status = String(err?.response?.status ?? '')
-  // const t =
-  //   typeof window === 'undefined'
-  //     ? await getTranslations('statusMessage')
-  //     : useTranslations('statusMessage')
-
-  return Promise.reject({
-    // statusMessage: t(status),
-    ...err
-  })
 }
 
 export default ($axios: AxiosInstance) => {

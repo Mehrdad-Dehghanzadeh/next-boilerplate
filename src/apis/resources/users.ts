@@ -1,11 +1,20 @@
-import type { SignUpDto } from '@models/Users'
+import type { SignUpModel } from '@models/Users'
+import {
+  TUsersApi,
+  SignUpResponse,
+  SignUpResponseData,
+  TemplateResponseData,
+  TemplateResponse
+} from '@apis-type/Users'
 
-export default ($axios: any) => ({
-  signUp(payload: SignUpDto) {
-    return $axios.post('/users', payload)
+const usersApi: TUsersApi = ($axios) => ({
+  signUp(payload: SignUpModel) {
+    return $axios.post<SignUpResponseData, SignUpResponse, SignUpModel>('/users', payload)
   },
 
   template() {
-    return $axios.get('/template')
+    return $axios.get<TemplateResponseData, TemplateResponse>('/template')
   }
 })
+
+export default usersApi

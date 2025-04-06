@@ -1,4 +1,4 @@
-import { type Resource } from '@type/Apis'
+import type { ApiResources, ApiMethods } from '@apis-type/index'
 import { useEffect, useState, forwardRef, useImperativeHandle } from 'react'
 import { DataGrid, type DataGridProps } from '@mui/x-data-grid'
 import useSnackbar from '@hooks/useSnackbar'
@@ -6,9 +6,9 @@ import apis from '@apis'
 import './KDataGridServer.scss'
 
 interface Props extends DataGridProps {
-  resource: Resource
-  method?: string
-  refresh?: (calback: () => void) => void
+  resource: ApiResources
+  method: ApiMethods | 'read'
+  refresh?: (callback: () => void) => void
   params?: Record<string, any>
   responseDataField?: string
 }
@@ -30,7 +30,7 @@ export const KDataGridServer = forwardRef<any, Props>(function (
   const getData = () => {
     setLoading(true)
     const payload = createPayload()
-
+    //@ts-ignore
     apis[resource][method](payload)
       .then(({ data }: { data: any }) => {
         const tempValue = Array.isArray(data?.[responseDataField])
