@@ -1,11 +1,11 @@
-import { type Resource } from '@type/Apis'
+import type { TApis } from '@apis-type'
 import $axios from './$axios'
-import auth from './resources/auth'
-import users from './resources/users'
+import authApi from './resources/auth'
+import usersApi from './resources/users'
 
-const apis: Record<Resource, any> = {
-  auth: auth($axios),
-  users: users($axios)
+const apis: TApis = {
+  auth: authApi($axios),
+  users: usersApi($axios)
 }
 
 export default apis

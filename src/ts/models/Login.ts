@@ -1,11 +1,11 @@
-export interface LoginMobileDto {
+export interface LoginMobileModel {
   password: string
   mobilePhoneNumber: string
 }
 
-export interface LoginEmailDto {
+export interface LoginEmailModel {
   password: string
   email: string
 }
 
-export type LoginDtos = LoginMobileDto | LoginEmailDto
+export type LoginModel = LoginMobileModel | LoginEmailModel

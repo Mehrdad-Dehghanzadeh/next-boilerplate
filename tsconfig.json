@@ -31,6 +31,8 @@
       "@utils/*": ["./src/utils/*"],
       "@assets/*": ["./src/assets/*"],
       "@type/*": ["./src/ts/type/*"],
+      "@apis-type/*": ["./src/ts/type/apis/*"],
+      "@apis-type": ["./src/ts/type/apis"],
       "@enums/*": ["./src/ts/enums/*"],
       "@models/*": ["./src/ts/models/*"],
       "@hooks/*": ["./src/hooks/*"],

@@ -1,4 +1,4 @@
-export interface SignUpDto {
+export interface SignUpModel {
   mobilePhoneNumber: string
   password: string
   email: string
