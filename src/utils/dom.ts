@@ -49,3 +49,41 @@ export const findInHtmlString = (htmlString: string, id: string): string => {
 export const isHidden = (el: HTMLElement): boolean => {
   return el.offsetParent === null
 }
+
+/*
+ * add Class name with other class
+ ************************************/
+export function classes(className: string, otherClass: string = ''): string {
+  return `${className}${otherClass && ' ' + otherClass}`
+}
+
+/**
+ * add conditional class
+ ********************************/
+export function conditionalClass(classes: TData<boolean | null | undefined>): string {
+  let val: string = ''
+  for (const prop in classes) {
+    if (classes[prop]) {
+      val += val.length ? ' ' + prop : prop
+    }
+  }
+
+  return val
+}
+
+export function classList(list: (TData<boolean | null | undefined> | string)[]) {
+  let val = ''
+
+  for (const item of list) {
+    if (typeof item === 'string') {
+      val += val.length ? ' ' + item : item
+      continue
+    }
+
+    if (typeof item === 'object') {
+      val += val.length ? ' ' + conditionalClass(item) : conditionalClass(item)
+    }
+  }
+
+  return val
+}
