@@ -1,4 +1,4 @@
-// offer color for light and dark color-hex.com
+@use '../functions/' as c;
 
 $colors-common: (
   'black': #000,
@@ -80,7 +80,7 @@ $colors-divider: (
   'divider': rgba(0, 0, 0, 0.12)
 );
 
-$colors: map-collect(
+$colors: c.map-collect(
   $colors-common,
   $colors-primary,
   $colors-secondary,
